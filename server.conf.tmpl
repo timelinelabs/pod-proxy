@@ -8,7 +8,7 @@ map $http_upgrade $proxy_connection {
   ''      'close';
 }
 
-map $proxy_host $tll_host {
+map $http_host $proxy_host {
     {{ if has_key .Env "HOST" }}default "{{ .Env.HOST }}";
     {{ else }}default $http_host;
     '' $host;{{ end }}
